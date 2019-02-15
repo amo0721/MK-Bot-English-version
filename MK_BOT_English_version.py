@@ -1,4 +1,4 @@
-import asyncio, discord ,setting
+import asyncio, discord ,setting, os
 from activity_log import log_actvity, log_start_actvity
 
 
@@ -131,5 +131,5 @@ async def on_message(message):
                    embed.add_field(name='MK BOT korea version admin', value='컴퓨터의모든팁들#6225')
                    await client.send_message(message.channel, embed=embed)
 
-    
-client.run('NTI2MjM5MjE2NzQ1NzA5NTY4.DyQ-aQ.TBybWBU9knY_MhLOVVEa-ezbmrU')    
+access_token = os.environ["BOT_TOKEN"]             
+client.run(access_token)    

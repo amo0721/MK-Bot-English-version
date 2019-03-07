@@ -1,1 +1,1 @@
-worker: python MK_BOT_English_version.py
+worker: python MK_Bot_English_version.py

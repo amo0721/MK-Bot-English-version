@@ -50,51 +50,7 @@ async def on_message(message):
                                                 except app.NotFound:
                                                     e.append(str(channel.id))
                                                     ec[channel.id] = "NotFound"
-                                                except discord.InvalidArgument:
-                                                    e.append(str(channel.id))
-                                                    ec[channel.id] = "InvalidArgument"
-                                                else:
-                                                    a.append(str(server.id))
-                                                    b.append(str(channel.id))
-                        asdf = "```\n"
-                        for server in client.servers:
-                            if not server.id in a:
-                                try:
-                                    ch = await client.create_channel(server, "MK-BOT-notice")
-                                    await client.send_message(ch, "An announcement channel could not be found, resulting in channel creation. Please get DM. `컴퓨터의모든팁들#6225`")
-                                    await client.send_message(ch, message.content)
-                                except:
-                                    asdf = asdf + str(server.name) + "[Channel creation failed.]\n"
-                                else:
-                                    asdf = asdf + str(server.name) + "[Channel generation and retransmission successful.]\n"
-                        asdf = asdf + "```"
-                        embed=discord.Embed(title="MK BOT all notice system", color=0xb2ebf4)
-                        embed.add_field(name="Send to all channel, it was finsh!", value="요청자 : <@" + message.author.id + ">", inline=True)
-                        bs = "```\n"
-                        es = "```\n"
-                        for bf in b:
-                            bn = client.get_channel(bf).name
-                            bs = bs + str(bn) + "\n"
-                        for ef in e:
-                            en = client.get_channel(ef).name
-                            es = es + str(client.get_channel(ef).server.name) + "(#" + str(en) + ") : " + ec[ef] + "\n"
-                        bs = bs + "```"
-                        es = es + "```"
-                        if bs == "``````":
-                            bs = "``` ```"
-                        if es == "``````":
-                            es = "``` ```"
-                        if asdf == "``````":
-                            asdf = "``` ```"
-                        sucess = bs
-                        missing = es
-                        notfound = asdf
-                        embed.add_field(name="The following channels succeeded in sending the announcement :", value=sucess, inline=False)
-                        embed.add_field(name="The following channels failed to send notifications :", value=missing, inline=False)
-                        embed.add_field(name="Servers with no keywords found include :", value=notfound, inline=False)
-                        await client.edit_message(mssg, embed=embed)
-                        # DPNK 사용 구문 종점
-                        log_actvity("I send Notice for all Server. (content : %s\nSuccess : %s\nFail : %s\nNotfound : %s)." % (message.content, sucess, missing, notfound))
+                             
     
      
                 if "MK finsh working" == message.content:

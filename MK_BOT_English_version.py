@@ -1,5 +1,4 @@
-import asyncio, discord ,setting, os
-from activity_log import log_actvity, log_start_actvity
+import asyncio, discord ,setting
 
 
 
@@ -20,7 +19,6 @@ async def on_message(message):
                     if message.author.id == Setting.owner_id:
                         await client.send_message(message.channel, "<@%s>, Stops the bot. Offline within 5 minutes (Discord API Delay)." % (message.author.id))
                         await client.change_presence(game=discord.Game(name="Offline", type=0))
-                        log_actvity("Change status to offline (Request by. %s)." % (message.author.id))
                         quit() # 종료가성공적으로완료됌
                     else:
                         await client.send_message(message.channel, "<@%s>, You are not registered as a bot administrator." % (message.author.id))
